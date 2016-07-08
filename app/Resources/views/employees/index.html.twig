@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Employees list</h1>
+
+ {{ form_start(form) }}
+        {{ form_widget(form) }}
+        
+        <input type="submit" value="Go" />
+    {{ form_end(form) }}
+
+    <table .table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td><a href="{{ path('employees_show', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.department }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('employees_show', { 'id': employee.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('employees_edit', { 'id': employee.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('employees_new') }}">Create a new employee</a>
+        </li>
+
+        <li>
+            <a href="{{ path('department_new') }}">Create a new department</a>
+        </li>
+        <li>
+            <a href="{{ path('department_index') }}">All departments</a>
+        </li>
+    </ul>
+{% endblock %}

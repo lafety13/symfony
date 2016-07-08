@@ -1,0 +1,11 @@
+emp_employees:
+    resource: "@EmpBundle/Resources/config/routing/employees.yml"
+    prefix:   /employees
+
+emp_department:
+    resource: "@EmpBundle/Resources/config/routing/department.yml"
+    prefix:   /department
+
+emp_homepage:
+    path:     /hello
+    defaults: { _controller: EmpBundle:Default:index }
